@@ -1,5 +1,5 @@
 {
-  "name": "el-cascader",
+  "name": "cascader-ui",
   "version": "1.0.0",
   "description": "基于element-ui的级联多选",
   "main": "src/index.js",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/I-really-konw-P/el-cascader.git"
+    "url": "git+https://github.com/I-really-konw-P/cascader-ui.git"
   },
   "keywords": [
     "element",
@@ -19,9 +19,9 @@
   "author": "charming <2019.02>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/I-really-konw-P/el-cascader/issues"
+    "url": "https://github.com/I-really-konw-P/cascader-ui/issues"
   },
-  "homepage": "https://github.com/I-really-konw-P/el-cascader#readme",
+  "homepage": "https://github.com/I-really-konw-P/cascader-ui#readme",
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",

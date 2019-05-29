@@ -1,4 +1,4 @@
-# el-cascader
+# cascader-ui
 
 > 基于element-ui的级联多选选择器，友好显示下拉箭头，样式与element一致，支持多选与级联选择器的大部分功能。
 
@@ -7,7 +7,7 @@
 ## install 安装
 
 ```shell
-npm i el-cascader --save
+npm i cascader-ui --save
 ```
 
 ## use 使用
@@ -15,7 +15,7 @@ npm i el-cascader --save
 在main.js中写入下面的代码
 
 ```javascript
-import elCascaderMulti from "el-cascader";
+import elCascaderMulti from "cascader-ui";
 Vue.use(elCascaderMulti);
 ```
 
@@ -23,7 +23,7 @@ Vue.use(elCascaderMulti);
 
 ```html
 <template>
-    <el-cascader v-model="checkList" :data="data"> </el-cascader>
+    <cascader-ui v-model="checkList" :data="data"> </cascader-ui>
 </template>
 <script>
     export default {
