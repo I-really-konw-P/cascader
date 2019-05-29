@@ -76,7 +76,7 @@ import renderList from './render-list.vue'
 import _ from 'lodash'
 import { _findByObj } from './tool/unit'
 export default {
-  name: 'el-cascader-multi',
+  name: 'el-cascader',
   components: {
     renderList
   },
