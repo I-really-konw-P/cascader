@@ -17,6 +17,7 @@ module.exports = (env, argv) => {
       path: resolve('dist'),
       filename: 'index.js',
     },
+    mode: 'development',
     resolve: {
       // 定义模块查找的后缀，方便在代码引用时可省略后缀
       extensions: ['.js', '.vue', '.json'],
