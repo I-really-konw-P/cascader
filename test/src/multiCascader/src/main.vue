@@ -654,7 +654,6 @@ export default {
                         value.splice(currentIndex, 1);
                     }
                     value = value.filter((ele) => !(ele.length > item.length && this.menu.isArrayEqual(item, ele.slice(0, item.length))));
-                    console.log(value);
                 // }
                 this.handlePick(value, true, true);
             }

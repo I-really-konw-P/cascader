@@ -162,13 +162,13 @@
           } else if (item.children && item.children.length > 0) {
             // 有大于0个的子菜单
             // 且父子联动或者可输出所有层级的节点
-            if( this.onlyOutPutLeafNode) {
+            if(!this.selectChildren || this.onlyOutPutLeafNode) {
               if (item.children.every(ele => {
                 let tmp = this.isItemChecked(ele);
                 return tmp === CHECKED || tmp === CHILD_ALL_CHECKED;
               })) {
                 isChecked = CHILD_ALL_CHECKED; // 如果所有的子菜单都checked
-                debugger
+                // debugger
               } else if (!item.children.every(ele => this.isItemChecked(ele) === UNCHECKED)) {
                 isChecked = CHILD_SOME_CHECKED; // 如果所有的子菜单不全是unchecked
               }
@@ -260,8 +260,8 @@
             if (this.selectChildren) {
               this.pushAllChild(item);
             }
-            // !selectChildren && !onlyOutPutLeafNode 
-            if (!this.onlyOutPutLeafNode && this.selectChildren) {
+            // !selectChildren && !onlyOutPutLeafNode
+            if (!this.onlyOutPutLeafNode && !this.selectChildren) {
               // if(this.selectChildren) {
                 this.pushParent(item);
               // }
@@ -312,7 +312,7 @@
           this.activeOptions.splice(menuIndex + 1, len, item.children);
           // if (this.changeOnSelect) {
           //   this.$emit('pick', this.activeMultiValue.slice(), false);
-          // } 
+          // }
           this.$emit('activeItemChange', this.activeValue);
           return;
         }

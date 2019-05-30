@@ -179,12 +179,12 @@ export default {
             disabled: false
         }];
         return {
-            selectedOptions: [],
+            selectedOptions: [[1, 11, 51 ]],
             optionsShow: JSON.parse(JSON.stringify(optionsShow)),
             options: JSON.parse(JSON.stringify(optionsShow)),
             appendToBody: true,
             multiple: true,
-            selectChildren: true,
+            selectChildren: false,
             onlyOutPutLeafNode: false,
             collapseTags: false,
             filterable: true,
