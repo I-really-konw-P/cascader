@@ -16,7 +16,7 @@
         v-clickoutside="handleClickoutside"
         @keydown="handleKeydown">
         <el-input ref="input"
-        class="multi-base-input"
+            class="multi-base-input"
             :readonly="readonly"
             :placeholder="currentLabels.length ? undefined : placeholder"
             v-model="inputValue"
@@ -232,7 +232,7 @@ export default {
                 return [];
             }
         },
-        separator: {
+        separator: {//分隔符
             type: String,
             default: '/'
         },
@@ -247,14 +247,14 @@ export default {
             type: Boolean,
             default: false
         },
-        changeOnSelect: Boolean,
-        collapseTags: Boolean,
+        changeOnSelect: Boolean,//是否可以选任意一级
+        collapseTags: Boolean,//是否折叠label
         popperClass: String,
-        expandTrigger: {
+        expandTrigger: {//触发模式click、hover
             type: String,
             default: 'click'
         },
-        filterable: Boolean,
+        filterable: Boolean,//是否可以搜索
         size: String,
         showAllLevels: {
             type: Boolean,
@@ -276,7 +276,7 @@ export default {
             type: Boolean,
             default: false
         },
-        selectChildren: {
+        selectChildren: {//是否是否父子联动
             type: Boolean,
             default: false
         },
@@ -636,23 +636,26 @@ export default {
             if (index > -1 && !this.cascaderDisabled) {
                 let value = this.currentValue.slice();
                 let item = this.currentValue[index];
-                if (this.selectChildren) { // 子节点如果随着父节点联动，则子节点取消也会取消父节点的选中状态, 并取消孙子节点的状态
-                    // 删除父节点
-                    item.forEach((ele, idx) => {
-                        let currentPath = item.slice(0, idx + 1);
-                        let currentIndex = value.findIndex((ele) => this.menu.isArrayEqual(currentPath, ele));
-                        if (currentIndex !== -1) {
-                            value.splice(currentIndex, 1);
-                        }
-                    });
-                    // 删除子节点
-                    value = value.filter((ele) => !(ele.length > item.length && this.menu.isArrayEqual(item, ele.slice(0, item.length))));
-                } else {
+                // if (!this.selectChildren) { // 子节点如果随着父节点联动，则子节点取消也会取消父节点的选中状态, 并取消孙子节点的状态
+                //     // 删除父节点
+                //     item.forEach((ele, idx) => {
+                //         let currentPath = item.slice(0, idx + 1);
+                //         let currentIndex = value.findIndex((ele) => this.menu.isArrayEqual(currentPath, ele));
+                //         console.log(currentPath,currentIndex);
+                //         if (currentIndex !== -1) {
+                //             value.splice(currentIndex, 1);
+                //         }
+                //     });
+                //     // 删除子节点
+                //     value = value.filter((ele) => !(ele.length > item.length && this.menu.isArrayEqual(item, ele.slice(0, item.length))));
+                // }else {
                     let currentIndex = value.findIndex((ele) => this.menu.isArrayEqual(item, ele));
                     if (currentIndex !== -1) {
                         value.splice(currentIndex, 1);
                     }
-                }
+                    value = value.filter((ele) => !(ele.length > item.length && this.menu.isArrayEqual(item, ele.slice(0, item.length))));
+                    console.log(value);
+                // }
                 this.handlePick(value, true, true);
             }
             event.stopPropagation();

@@ -162,12 +162,13 @@
           } else if (item.children && item.children.length > 0) {
             // 有大于0个的子菜单
             // 且父子联动或者可输出所有层级的节点
-            if(this.selectChildren || this.onlyOutPutLeafNode) {
+            if( this.onlyOutPutLeafNode) {
               if (item.children.every(ele => {
                 let tmp = this.isItemChecked(ele);
                 return tmp === CHECKED || tmp === CHILD_ALL_CHECKED;
               })) {
                 isChecked = CHILD_ALL_CHECKED; // 如果所有的子菜单都checked
+                debugger
               } else if (!item.children.every(ele => this.isItemChecked(ele) === UNCHECKED)) {
                 isChecked = CHILD_SOME_CHECKED; // 如果所有的子菜单不全是unchecked
               }
@@ -251,7 +252,9 @@
       select(item, menuIndex, multipleCheckBox) {
         if (this.multiple) {
           if (multipleCheckBox) {
+            // debugger
             if (this.isNodeCanpush(item) && !this.activeMultiValue.find((ele) => this.isArrayEqual(item.path, ele))) {
+              console.log(this.activeMultiValue);
               this.activeMultiValue.push(item.path);
             }
             if (this.selectChildren) {
@@ -276,10 +279,12 @@
               // 删除子节点
               this.activeMultiValue = this.activeMultiValue.filter((ele) => !(ele.length > item.path.length && this.isArrayEqual(item.path, ele.slice(0, item.path.length))));
             } else {
+              // debugger
               let currentIndex = this.activeMultiValue.findIndex((ele) => this.isArrayEqual(item.path, ele));
               if (currentIndex !== -1) {
                 this.activeMultiValue.splice(currentIndex, 1);
               }
+              this.activeMultiValue = this.activeMultiValue.filter((ele) => !(ele.length > item.path.length && this.isArrayEqual(item.path, ele.slice(0, item.path.length))));
             }
           }
         }
